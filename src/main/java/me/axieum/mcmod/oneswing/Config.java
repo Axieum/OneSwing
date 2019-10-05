@@ -17,17 +17,20 @@ public class Config
     public static ForgeConfigSpec COMMON_CONFIG;
 
     private static final String CATEGORY_AXES = "axes";
+    public static ForgeConfigSpec.DoubleValue AXE_SPEED_MODIFIER;
     public static ForgeConfigSpec.ConfigValue<List<String>> AXE_WHITELIST, AXE_BLACKLIST;
 
     private static final String CATEGORY_TREES = "trees";
     public static ForgeConfigSpec.LongValue DELAY;
     public static ForgeConfigSpec.IntValue SIZE_THRESHOLD;
-    public static ForgeConfigSpec.ConfigValue<List<String>> BLOCK_WHITELIST, BLOCK_BLACKLIST;
 
     // Define configuration schema
     static {
         // AXES
         COMMON_BUILDER.comment("Axe configuration").push(CATEGORY_AXES);
+
+        AXE_SPEED_MODIFIER = COMMON_BUILDER.comment("Axe speed modifier respective to the tree height")
+                                           .defineInRange("speed", 2.0, 0, Double.MAX_VALUE);
 
         AXE_WHITELIST = COMMON_BUILDER.comment("Axes that are allowed to one swing at trees (empty = all allowed)")
                                       .define("whitelist", new ArrayList<>());
@@ -45,13 +48,6 @@ public class Config
 
         SIZE_THRESHOLD = COMMON_BUILDER.comment("Maximum tree size threshold (log count)")
                                        .defineInRange("threshold", 256, 2, Integer.MAX_VALUE);
-
-        BLOCK_WHITELIST = COMMON_BUILDER.comment(
-                "Blocks that are allowed to be chopped in one swing (empty = all allowed)")
-                                        .define("whitelist", new ArrayList<>());
-
-        BLOCK_BLACKLIST = COMMON_BUILDER.comment("Blocks that are disallowed from being chopped in one swing")
-                                        .define("blacklist", new ArrayList<>());
 
         COMMON_BUILDER.pop();
 
