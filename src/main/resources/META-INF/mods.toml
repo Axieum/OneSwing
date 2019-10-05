@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+issueTrackerURL="https://github.com/Axieum/OneSwing/issues"
+displayURL="https://github.com/Axieum/OneSwing"
+#logoFile="logo.png"
+authors="Axieum"
+
+[[mods]]
+modId="oneswing"
+version="${file.jarVersion}"
+displayName="One Swing"
+description='''
+Chop down an entire tree in one swing of an axe
+'''
+
+[[dependencies.mdc]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.mdc]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4]"
+    ordering="NONE"
+    side="BOTH"
